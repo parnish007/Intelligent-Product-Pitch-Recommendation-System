@@ -2,16 +2,16 @@ import streamlit as st
 import pandas as pd
 import joblib
 
-# ===============================
+
 # Load trained pipeline
-# ===============================
+
 MODEL_PATH = r"C:\Users\AB\Desktop\tour_package_recommanding_system\model\product_pitch_pipeline.pkl"
 pipeline = joblib.load(MODEL_PATH)
 MODEL_CLASSES = pipeline.named_steps["model"].classes_
 
-# ===============================
+
 # Page config
-# ===============================
+
 st.set_page_config(
     page_title="Product Pitch Suggestion",
     page_icon="🛒",
@@ -22,9 +22,9 @@ st.title("🛒 Product Pitch Suggestion App")
 st.markdown("Predict the **best travel product to pitch** using Machine Learning.")
 st.divider()
 
-# ===============================
-# Feature schema (MUST match backend)
-# ===============================
+
+# Feature schema 
+
 FEATURE_COLUMNS = [
     'Age', 'TypeofContact', 'CityTier', 'DurationOfPitch',
     'Occupation', 'Gender', 'NumberOfPersonVisiting',
@@ -34,9 +34,9 @@ FEATURE_COLUMNS = [
     'NumberOfChildrenVisiting', 'Designation', 'MonthlyIncome'
 ]
 
-# ============================================================
-# 🔹 SINGLE PREDICTION
-# ============================================================
+
+#  SINGLE PREDICTION
+
 st.header("🔹 Single Customer Prediction")
 
 col1, col2 = st.columns(2)
@@ -106,9 +106,9 @@ if st.button("🎯 Suggest Product", use_container_width=True):
     except Exception as e:
         st.error(f"Prediction failed: {e}")
 
-# ============================================================
-# 🔹 BULK PREDICTION
-# ============================================================
+
+#  BULK PREDICTION
+
 st.divider()
 st.header("🔹 Bulk Prediction (CSV Upload)")
 

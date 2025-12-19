@@ -23,9 +23,9 @@ from sklearn.impute import SimpleImputer
 
 from utils import validate_required_columns, convert_yes_no_columns
 
-# ===============================
+
 # Feature Definition
-# ===============================
+
 
 FEATURE_COLUMNS = [
     'Age', 'TypeofContact', 'CityTier', 'DurationOfPitch',
@@ -39,9 +39,9 @@ FEATURE_COLUMNS = [
 TARGET_COLUMN = "ProductPitched"
 
 
-# ===============================
+
 # Preprocessor
-# ===============================
+
 
 def build_preprocessor(
     numeric_cols: List[str],
@@ -75,9 +75,8 @@ def build_preprocessor(
     ])
 
 
-# ===============================
 # Pipeline Builder
-# ===============================
+
 
 def build_pipeline(preprocessor: ColumnTransformer) -> Pipeline:
     return Pipeline([
@@ -90,9 +89,9 @@ def build_pipeline(preprocessor: ColumnTransformer) -> Pipeline:
     ])
 
 
-# ===============================
+
 # Train & Evaluate
-# ===============================
+
 
 def train_and_evaluate(
     X: pd.DataFrame,
@@ -145,9 +144,9 @@ if __name__ == "__main__":
     parser.add_argument("--output", type=str, default="product_pitch_pipeline.pkl")
     args = parser.parse_args()
 
-    # -------------------------------
+    
     # Load data
-    # -------------------------------
+    
     df = pd.read_csv(args.data)
 
     is_valid, missing = validate_required_columns(
@@ -156,18 +155,18 @@ if __name__ == "__main__":
     if not is_valid:
         raise ValueError(f"Missing required columns: {missing}")
 
-    # -------------------------------
+    
     # Feature / Target split
-    # -------------------------------
+    
     X = df[FEATURE_COLUMNS]
     y = df[TARGET_COLUMN]
 
     # Binary normalization (safe)
     X = convert_yes_no_columns(X, ["Passport", "OwnCar"])
 
-    # -------------------------------
+  
     # Column grouping
-    # -------------------------------
+  
     numeric_cols = X.select_dtypes(include=["int64", "float64"]).columns.tolist()
 
     ordinal_dict = {
@@ -179,9 +178,9 @@ if __name__ == "__main__":
         "TypeofContact", "Gender", "MaritalStatus"
     ]
 
-    # -------------------------------
+    
     # Build pipeline
-    # -------------------------------
+    
     preprocessor = build_preprocessor(
         numeric_cols=numeric_cols,
         ordinal_dict=ordinal_dict,
@@ -190,9 +189,9 @@ if __name__ == "__main__":
 
     pipeline = build_pipeline(preprocessor)
 
-    # -------------------------------
+    
     # Train
-    # -------------------------------
+    
     model, metrics = train_and_evaluate(
         X, y, pipeline,
         grid={
@@ -203,9 +202,9 @@ if __name__ == "__main__":
         }
     )
 
-    # -------------------------------
+    
     # Results
-    # -------------------------------
+    
     print("\n📊 MODEL PERFORMANCE")
     print(f"Accuracy : {metrics['accuracy']:.4f}")
     print(f"F1 Score : {metrics['f1']:.4f}")
@@ -215,8 +214,8 @@ if __name__ == "__main__":
     print("\n📌 Best Parameters:")
     print(metrics["best_params"])
 
-    # -------------------------------
+    
     # Save model
-    # -------------------------------
+    
     save_pipeline(model, args.output)
-    print(f"\n✅ Model saved to: {args.output}")
+    print(f"\n Model saved to: {args.output}")

@@ -10,9 +10,9 @@ import pandas as pd
 import numpy as np
 from sklearn.impute import SimpleImputer
 
-# ===============================
+
 # Missing Value Handling
-# ===============================
+
 
 def handle_missing_values(
     df: pd.DataFrame,
@@ -42,9 +42,9 @@ def handle_missing_values(
     return df
 
 
-# ===============================
+
 # Outlier Handling (EDA only)
-# ===============================
+
 
 def handle_outliers_iqr(
     df: pd.DataFrame,
@@ -87,9 +87,9 @@ def handle_outliers_iqr(
     return df
 
 
-# ===============================
+#
 # Simple Helpers
-# ===============================
+
 
 YES_NO_MAP = {
     "yes": 1, "no": 0, "y": 1, "n": 0,
