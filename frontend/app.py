@@ -7,7 +7,6 @@ import joblib
 # ===============================
 MODEL_PATH = r"C:\Users\AB\Desktop\tour_package_recommanding_system\model\product_pitch_pipeline.pkl"
 pipeline = joblib.load(MODEL_PATH)
-
 MODEL_CLASSES = pipeline.named_steps["model"].classes_
 
 # ===============================
@@ -43,10 +42,10 @@ st.header("🔹 Single Customer Prediction")
 col1, col2 = st.columns(2)
 
 with col1:
-    Age = st.number_input("Age", 18, 100, 30)
+    Age = st.slider("Age", 18, 100, 30)
     TypeofContact = st.selectbox("Type of Contact", ["Self Enquiry", "Company Invited"])
     CityTier = st.selectbox("City Tier", [1, 2, 3])
-    DurationOfPitch = st.number_input("Duration of Pitch (minutes)", 1, 60, 10)
+    DurationOfPitch = st.slider("Duration of Pitch (minutes)", 1, 60, 10)
     Occupation = st.selectbox(
         "Occupation",
         ["Free Lancer", "Salaried", "Small Business", "Large Business"]
@@ -54,24 +53,25 @@ with col1:
     Gender = st.selectbox("Gender", ["Male", "Female"])
 
 with col2:
-    NumberOfPersonVisiting = st.number_input("Number of Persons Visiting", 1, 20, 2)
-    NumberOfFollowups = st.number_input("Number of Follow-ups", 0, 20, 1)
+    NumberOfPersonVisiting = st.slider("Number of Persons Visiting", 1, 20, 2)
+    NumberOfFollowups = st.slider("Number of Follow-ups", 0, 20, 1)
     PreferredPropertyStar = st.selectbox("Preferred Property Star", [1, 2, 3, 4, 5])
     MaritalStatus = st.selectbox(
         "Marital Status",
         ["Single", "Unmarried", "Divorced", "Married"]
     )
-    NumberOfTrips = st.number_input("Number of Trips", 0, 20, 1)
+    NumberOfTrips = st.slider("Number of Trips", 0, 20, 1)
     Passport = st.selectbox("Has Passport?", [0, 1])
-    PitchSatisfactionScore = st.number_input("Pitch Satisfaction Score", 1, 5, 3)
+    PitchSatisfactionScore = st.slider("Pitch Satisfaction Score", 1, 5, 3)
     OwnCar = st.selectbox("Owns a Car?", [0, 1])
-    NumberOfChildrenVisiting = st.number_input("Number of Children Visiting", 0, 10, 0)
+    NumberOfChildrenVisiting = st.slider("Number of Children Visiting", 0, 10, 0)
     Designation = st.selectbox(
         "Designation",
         ["Executive", "Manager", "Senior Manager", "AVP", "VP"]
     )
-    MonthlyIncome = st.number_input("Monthly Income", 0, 1_000_000, 20_000)
+    MonthlyIncome = st.slider("Monthly Income", 0, 1_000_000, 20_000, step=1000)
 
+# Prepare dataframe for prediction
 customer_df = pd.DataFrame([{
     "Age": Age,
     "TypeofContact": TypeofContact,
