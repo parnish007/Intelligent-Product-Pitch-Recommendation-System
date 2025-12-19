@@ -1,7 +1,7 @@
 # 🛒 Product Pitch Recommendation System
 
 <p align="center">
-  <img src="frontend/assets/cover.png" alt="Product Pitch Recommendation System Cover" width="100%" />
+  <img src="frontend/assests/cover.jpg" alt="Product Pitch Recommendation System Cover" width="50%" />
 </p>
 
 <h2 align="center">From Raw Customer Data → To The Right Pitch → With Confidence</h2>
@@ -64,7 +64,7 @@ This is **not** just a model notebook.
 ### 🔹 Landing & Input Experience
 
 <p align="center">
-  <img src="frontend/assets/ui_single_prediction.png" alt="Single Prediction UI" width="95%" />
+  <img src="frontend/assests/single_prediction.png" alt="Single Prediction UI" width="95%" />
 </p>
 
 **Design choices explained:**
@@ -144,7 +144,7 @@ This structure ensures **consistency, safety, and scalability**.
 ## 📊 Model Performance & Evaluation (Proof It Actually Works)
 
 <p align="center">
-  <img src="frontend/assets/single_prediction.png" alt="Model Accuracy Visualization" width="85%" />
+  <img src="frontend/assests/performance_metrics.jpg" alt="Model Accuracy Visualization" width="85%" />
 </p>
 
 Our pipeline was **rigorously trained, validated, and evaluated** to ensure both accuracy and reliability in real-world usage.
@@ -222,7 +222,7 @@ This allows:
 ## 🎨 UI Design Highlights (Because UX Is Part of ML)
 
 <p align="center">
-  <img src="frontend/assets/ui_single_prediction.png" alt="UI Banner" width="95%" />
+  <img src="frontend/assests/ui.png" alt="UI Banner" width="95%" />
 </p>
 
 ### Why the UI Matters
@@ -242,7 +242,7 @@ UX decisions made here:
 ## 🖼️ Output Examples (What Users Actually Get)
 
 <p align="center">
-  <img src="frontend/assets/ui_bulk_prediction.png" alt="Bulk Output Example" width="95%" />
+  <img src="frontend/assests/bulk_prediction.png" alt="Bulk Output Example" width="95%" />
 </p>
 
 Outputs include:
@@ -290,3 +290,4 @@ I ask:
 <p align="center">
   ⭐ If this project helped you — consider starring it.
 </p>
+
